@@ -1,0 +1,58 @@
+
+
+
+.resumeTitle{
+  
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 29px;
+    letter-spacing: 0.6px;
+    word-spacing: -3.4px;
+    color: #1D7B80;
+    font-weight: 700;
+    text-decoration: none;
+    font-style: italic;
+    font-variant: normal;
+    text-transform: none;
+    text-shadow: -3px 2px 2px #45B0B5;
+    -webkit-box-reflect: below -8px linear-gradient(transparent,rgba(0,6,255,0.15));
+  
+  }
+  
+  .resumeTitle span{
+    position:relative;
+    animation: animate 1s ease-in-out infinite;
+    animation-delay: calc(0.1s * var(--i));
+  }
+  
+  @keyframes animate{
+    0%{
+      transform:translateY(0px);
+    }
+    20%{
+      transform:translateY(-5px);
+    }
+  }
+
+
+
+
+@media screen and (max-width:420px) {
+    .navInvisible{
+        visibility:hidden;
+    }
+    .resumeTitle{
+        justify-content: center;
+        margin-left:55px;
+    }
+    .navContainer{
+        width:100%;
+    }
+    .wickedImg{
+        width:40px;
+    }
+}
+.navContainer{
+    display:flex;
+    border:1px solid red;
+    justify-content: space-around;
+}
