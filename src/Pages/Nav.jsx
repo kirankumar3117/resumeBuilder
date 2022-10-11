@@ -22,20 +22,21 @@ export const Nav = ()=>{
                 <span style={({"--i":13})}>r</span>
               <div  className={`${styled.wickedImg}`}><img src="https://emojipedia-us.s3.amazonaws.com/source/microsoft-teams/337/winking-face_1f609.png" alt="..." width="40px" /></div>
            </div>
-            {/* <div className={`text-right flex mt-3 cursor-pointe ${color} ${styled.navInvisible}`}>
+            <div className= {styled.navComp}>
             <div>
                 Fresher
             </div>
-            <div className='ml-5 cursor-poiter'>
+            <div className={""}>
                 Proffesional
             </div>
-            <select className='bg-transparent cursor-pointer ml-4 mb-2.5'>
-                Theme
+            <div>
+            <select>
                 <option value="light">Light</option>
                 <option value="dark">Dark</option>
                 <option value="system">System</option>
             </select>
-           </div> */}
+            </div>
+           </div>
           
         </div>)
 }

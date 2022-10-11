@@ -1,7 +1,7 @@
 .navContainer{
     width:100%;
-    border:1px solid red;
     display: flex;
+    justify-content:space-between;
    
 }
 /*resume builder css animation starts*/
@@ -19,7 +19,7 @@
     text-transform: none;
     text-shadow: -3px 2px 2px #45B0B5;
     -webkit-box-reflect: below -10px linear-gradient(transparent,rgba(0,6,255,0.15));
-    margin-left:10px;
+    margin-left:2rem;
     position: relative;
     display:flex;
   }
@@ -50,6 +50,25 @@
     margin-left:0.25rem;
   }
   /*wicked image e*/
+
+
+  /*nav component section s*/
+
+  .navComp{
+    display: flex;
+    flex-direction: row;
+    gap:1rem;
+    margin-top:1rem;
+   margin-right: 2rem;
+  }
+  @media screen and (max-width:580px) {
+    .navComp{
+        visibility:hidden;
+    }
+  }
+    /*nav component section e*/
+
+ 
 
 
   
