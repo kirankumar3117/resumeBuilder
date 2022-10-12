@@ -1,9 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from "./Nav.module.css";
-    
+import {useDispatch} from "react-redux";
+import { useSelector } from 'react-redux';
+import {setThemeState} from "../Store/Theme/theme.action"
     
 export const Nav = ()=>{
-    const [color,setColor]=useState("text-black")
+   //the state get from use selector
+    const {state}=useSelector((state)=>state.theme);
+    const dispatch=useDispatch();
+    const handleSelect=(e)=>{
+        if(e.target.value==="light"){
+            dispatch(setThemeState(false))
+        }
+        else{
+            dispatch(setThemeState(true))
+        }
+    }
     return(
         <div className={`${styled.navContainer}`}>
            <div className={`${styled.resumeTitle}`}>
@@ -30,10 +42,10 @@ export const Nav = ()=>{
                 Proffesional
             </div>
             <div>
-            <select>
-                <option value="light">Light</option>
-                <option value="dark">Dark</option>
-                <option value="system">System</option>
+            <select className={`${styled.navSelect} ${state ? styled.navSelectTheme : ""}`}  onChange={(e)=> handleSelect(e)}>
+                <option value="dark"  >Dark</option>
+                <option value="light" >Light</option>
+                <option value="system" >System</option>
             </select>
             </div>
            </div>

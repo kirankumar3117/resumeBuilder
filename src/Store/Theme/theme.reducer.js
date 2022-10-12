@@ -2,7 +2,7 @@ import {SET_THEME} from "./theme.type.js"
 
 
 const initial={
-    state:false;
+    state:true
 }
 
 export const SET_THEME_REDUCER=(state=initial,{type,payload})=>{

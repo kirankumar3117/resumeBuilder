@@ -1,74 +1,115 @@
 .navContainer{
-    width:100%;
-    display: flex;
-    justify-content:space-between;
-   
+  width:100%;
+  display: flex;
+  justify-content:space-around;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: 18px;
+  letter-spacing: 0px;
+  word-spacing: 2px;
+  font-weight: normal;;
+  font-style: normal;
+  font-variant: normal;
+ 
+}
+@media screen and (max-width:450px){
+ .navContainer{
+  flex-direction: column;
+ 
+ }
 }
 /*resume builder css animation starts*/
 
 .resumeTitle{
-    font-family: "Comic Sans MS", cursive, sans-serif;
-    font-size: 29px;
-    letter-spacing: 0.6px;
-    word-spacing: -3.4px;
-    color: #1D7B80;
-    font-weight: 700;
-    text-decoration: none;
-    font-style: italic;
-    font-variant: normal;
-    text-transform: none;
-    text-shadow: -3px 2px 2px #45B0B5;
-    -webkit-box-reflect: below -10px linear-gradient(transparent,rgba(0,6,255,0.15));
-    margin-left:2rem;
-    position: relative;
-    display:flex;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 29px;
+  letter-spacing: 0.6px;
+  word-spacing: -3.4px;
+  color: #1D7B80;
+  font-weight: 700;
+  text-decoration: none;
+  font-style: italic;
+  font-variant: normal;
+  text-transform: none;
+  text-shadow: -3px 2px 2px #45B0B5;
+  -webkit-box-reflect: below -10px linear-gradient(transparent,rgba(0,6,255,0.15));
+  margin-top:5px;
+  position: relative;
+  display:flex;
+}
+.resumeTitle span{
+  position:relative;
+  display: inline-block;
+  animation: animate 1s ease-in-out infinite;
+  animation-delay: calc(0.08s * var(--i));
+}
+
+@keyframes animate{
+  0%{
+    transform:translateY(0px);
   }
-  .resumeTitle span{
-    position:relative;
-    display: inline-block;
-    animation: animate 1s ease-in-out infinite;
-    animation-delay: calc(0.08s * var(--i));
+  20%{
+    transform:translateY(-5px);
   }
-  
-  @keyframes animate{
-    0%{
+  40%,100%{
       transform:translateY(0px);
-    }
-    20%{
-      transform:translateY(-5px);
-    }
-    40%,100%{
-        transform:translateY(0px);
-    }
   }
+}
 
-  /*resume builder css niamation ends*/
-
-  /*wicked image s*/
-  .wickedImg{
-    top:0.8rem;
-    margin-left:0.25rem;
+@media screen and (max-width:450px){
+  .resumeTitle{
+    width:100%;
+    justify-content:center;
   }
-  /*wicked image e*/
+}
+/*resume builder css niamation ends*/
+
+/*wicked image s*/
+.wickedImg{
+  top:0.8rem;
+  margin-left:0.25rem;
+}
+/*wicked image e*/
 
 
-  /*nav component section s*/
+/*nav component section s*/
 
+.navComp{
+  display: flex;
+  flex-direction: row;
+  gap:1rem;
+  margin-top:1rem;
+}
+.navComp div{
+  cursor:pointer;
+}
+@media screen and (max-width:450px){
   .navComp{
-    display: flex;
-    flex-direction: row;
-    gap:1rem;
-    margin-top:1rem;
-   margin-right: 2rem;
+    width:100%;
+    justify-content:center;
+    /* margin-top:-0.2rem;
+    margin-left:1rem; */
   }
-  @media screen and (max-width:580px) {
-    .navComp{
-        visibility:hidden;
-    }
-  }
-    /*nav component section e*/
+}
 
- 
+  /*nav component section e*/
+
+  /*nav select tag s*/
+.navSelect{
+font-family: Tahoma, Geneva, sans-serif;
+font-size: 18px;
+letter-spacing: 0.5px;
+word-spacing: 2px;
+font-weight: normal;;
+font-style: normal;
+font-variant: normal;
+}
+.navSelectTheme option{
+background-color:#101d36;
+}
+
+  /*nav select tag e*/
 
 
-  
+
+
+
