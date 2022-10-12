@@ -14,7 +14,6 @@
 @media screen and (max-width:450px){
  .navContainer{
   flex-direction: column;
- 
  }
 }
 /*resume builder css animation starts*/
@@ -106,7 +105,9 @@ font-variant: normal;
 .navSelectTheme option{
 background-color:#101d36;
 }
-
+.navSelect>option{
+  text-decoration: underline;
+}
   /*nav select tag e*/
 
 
