@@ -1,3 +1,3 @@
 
 
-export const RESUME_TYPE="resume.type";
+export const RESUME_TYPE="resume/type";

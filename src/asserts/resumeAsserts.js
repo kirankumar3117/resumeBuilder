@@ -1,87 +1,24 @@
-import resume1 from "./SirishaResume.pdf"
-import resume2 from "./KiranKumar_Resume.pdf"
+import resume1 from "../asserts/SirishaResume.pdf"
+import resume2 from "../asserts/KiranKumar_Resume.pdf"
 
 
 export const resumeAsserts=[
     {
-        noPages:2,
-        resume:{resume1},
-        image:"https://i.postimg.cc/dQkRqM6w/Capture.png"
-    },
-    {
-        noPages:1,
-        resume:{resume2},
-        image:"https://i.postimg.cc/dQkRqM6w/Capture.png"
-    },
-    {
-        noPages:1,
-        resume:{resume2},
-        image:"https://i.postimg.cc/dQkRqM6w/Capture.png"
-    },
-    {
-        noPages:1,
-        resume:{resume2},
-        image:"https://i.postimg.cc/dQkRqM6w/Capture.png"
-    },
-    {
-        noPages:1,
-        resume:{resume2},
-        image:"https://i.postimg.cc/dQkRqM6w/Capture.png"
-    },
-    {
-        noPages:1,
-        resume:{resume2},
-        image:"https://i.postimg.cc/dQkRqM6w/Capture.png"
-    },
-    {
-        noPages:1,
-        resume:{resume2},
-        image:"https://i.postimg.cc/dQkRqM6w/Capture.png"
-    },
+        noPages:[1,2],
+        resumeName:"SirishaResume.pdf",
+        image:"https://i.postimg.cc/dQkRqM6w/Capture.png",
+        name:"resume1",
+        resume:resume1,
+        keypoints:["build a you wih"]},
 
     {
-        noPages:1,
-        resume:{resume2},
-        image:"https://i.postimg.cc/dQkRqM6w/Capture.png"
+        noPages:[1],
+        resumeNane:"KiranKumar_Resume.pdf",
+        image:"https://i.postimg.cc/dQkRqM6w/Capture.png",
+        name:"resume2",
+        resume:resume2,
+        keypoints:["require","nothing"]
+
     },
-    {
-        noPages:1,
-        resume:{resume2},
-        image:"https://i.postimg.cc/dQkRqM6w/Capture.png"
-    },
-    {
-        noPages:1,
-        resume:{resume2},
-        image:"https://i.postimg.cc/dQkRqM6w/Capture.png"
-    },
-     {
-        noPages:1,
-        resume:{resume2},
-        image:"https://i.postimg.cc/dQkRqM6w/Capture.png"
-    },
-    {
-        noPages:1,
-        resume:{resume2},
-        image:"https://i.postimg.cc/dQkRqM6w/Capture.png"
-    },
-     {
-        noPages:1,
-        resume:{resume2},
-        image:"https://i.postimg.cc/dQkRqM6w/Capture.png"
-    },
-     {
-        noPages:1,
-        resume:{resume2},
-        image:"https://i.postimg.cc/dQkRqM6w/Capture.png"
-    },
-     {
-        noPages:1,
-        resume:{resume2},
-        image:"https://i.postimg.cc/dQkRqM6w/Capture.png"
-    },
-     {
-        noPages:1,
-        resume:{resume2},
-        image:"https://i.postimg.cc/dQkRqM6w/Capture.png"
-    },
+   
 ]

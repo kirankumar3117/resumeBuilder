@@ -4,9 +4,12 @@ import { useEffect } from 'react';
 import { Nav } from './Pages/Nav';
 import { useSelector } from 'react-redux';
 import { Resume } from './Pages/Resume';
-import { ResumeLandView } from './Pages/ResumeLandView';
 import { Landing } from './Pages/LandingPage';
 import {Route,Routes} from "react-router-dom"
+
+
+
+
 
 function App() {
   
@@ -26,9 +29,16 @@ useEffect(()=>{
   },[state])
   return (
     <div className="">
+      <Nav/>
+     
+      
       <Routes>
         <Route path="" element={<Landing/>}/>
+        <Route path="/view/:name" element={<Resume/>}/>
       </Routes>
+     
+      
+    
     </div>
   );
 }
