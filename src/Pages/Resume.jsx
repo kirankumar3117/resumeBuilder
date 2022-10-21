@@ -3,6 +3,7 @@ import {Document,Page,pdfjs} from "react-pdf"
 import styled from "./Resume.module.css";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -12,9 +13,16 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 
 export const Resume=(props)=>{
+    const navigate=useNavigate();
 
 const {resumeData}=useSelector((state)=>state.viewresume)
 
+const handleResumePages=()=>{
+    console.log("hgh")
+    if(resumeData.name=="resume1"){
+        navigate("/resume1")
+    }
+}
 
 const documentt=[];
     useEffect(()=>{
@@ -43,7 +51,7 @@ const documentt=[];
                        return <li>{e}</li>
                     })}
                 </div> : null}
-                <button>Build This</button>
+                <button onClick={()=>{handleResumePages()}}>Build This</button>
                 <h1>{}</h1>
             </div>
         

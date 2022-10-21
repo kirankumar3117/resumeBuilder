@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { Resume } from './Pages/Resume';
 import { Landing } from './Pages/LandingPage';
 import {Route,Routes} from "react-router-dom"
+import Resume1 from './ResumeBuilder/Resume1';
 
 
 
@@ -35,6 +36,7 @@ useEffect(()=>{
       <Routes>
         <Route path="" element={<Landing/>}/>
         <Route path="/view/:name" element={<Resume/>}/>
+        <Route path="/resume1" element={<Resume1/>}/>
       </Routes>
      
       
