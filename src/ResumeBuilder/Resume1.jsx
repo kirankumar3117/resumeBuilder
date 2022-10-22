@@ -5,6 +5,29 @@ import styled from './Resume1.module.css'
 function Resume1(){
     const componentRef=useRef();
 
+   const [language,setLanguage]=useState([]);
+   const [typeLanguage,setTypeLanguage]=useState("");
+   const [selectLanguage,setSelectLanguage]=useState("");
+
+   const languageControl=(e)=>{
+        let data={
+            name:typeLanguage,
+            range:selectLanguage
+        }
+       if(!typeLanguage){
+        alert("Enter All Language Fields")
+       }
+       else{
+        let newdata=language;
+        newdata.push(data);
+        setLanguage(newdata)
+       }
+       setTypeLanguage("")
+       setSelectLanguage("")
+       console.log(language[0].name)
+      
+   }
+
     const handleBuild=useReactToPrint({
         content:()=>componentRef.current,
         documentTitle:"enterResumeName",
@@ -16,13 +39,30 @@ function Resume1(){
 
     const handleSubmit=(e)=>{
        e.preventDefault();
+       let techskills=e.target.technicalskills.value;
+       techskills=techskills.split(",").join(" | ")
+       let softskills=e.target.softskills.value;
+       softskills=softskills.split(",").join(" | ")
         let obj={
             firstname:e.target.firstname.value,
             lastname:e.target.lastname.value,
             profession:e.target.profession.value,
             careerobjective:e.target.careerobjective.value,
+            course1name:e.target.course1name.value,
+            course1course:e.target.course1course.value,
+            course1year:e.target.course1year.value,
+            course1rank:e.target.course1rank.value,
+            course2name:e.target.course2name.value,
+            course2course:e.target.course2course.value,
+            course2year:e.target.course2year.value,
+            course2rank:e.target.course2rank.value,
+            technicalskills:techskills,
+            softskills:softskills,
+            languages:language,
         }
        setData({...obj});
+
+       alert("Data Submitted SuccessFully..(:")
     }
 
     return(<div>
@@ -36,14 +76,67 @@ function Resume1(){
             <label>profession <span style={({fontSize:"10px"})}>ex: (Fullstack Developer,Copy Writer)</span></label>
             <input type="text" class="form-control" name="profession"/>
             <label htmlFor="">Creer Objective</label>
-            <textarea name="careerobjective" rows="4" cols="35" className="form-control"></textarea>
-           <button>Add</button>
+            <textarea name="careerobjective" rows="4" cols="35" className="form-control" defaultValue={"Dedicated and detail-oriented aspiring full-stack developer with specialization in MERN stack Development. Self-motivated and curious, with a keen interest in building user-friendly products. Looking forward to honing my skills in a challenging work environment."}></textarea>
+
+            {/* INPUT EDUCATION */}
+
+            <h4>EDUCATION (Add top two courses)</h4>
+
+            {/* COURSE 1 */}
+
+            <label>course 1</label>
+            <input className="form-control" type="text" placeholder="School/College name" name="course1name"/>
+            <br/>
+            <input className="form-control" type="text" placeholder="course name ex:(compoter scince)" name="course1course"/>
+            <br/>
+            <input className="form-control" type="text" placeholder="course time ex:(2017/20221 , 2017-2021)" name="course1year"/>
+            <label htmlFor="">how much knowledge did you gain ?</label>
+            <input className="form-control" type="text" placeholder="ex:(98% , 98/100 , Master)" name="course1rank"/>
+
+            {/* COURSE 2 */}
+            <label>course 2</label>
+            <input className="form-control" type="text" placeholder="School/College name " name="course2name"/>
+            <br/>
+            <input className="form-control" type="text" placeholder="course name ex:(compoter scince)" name="course2course"/>
+            <br/>
+            <input className="form-control" type="text" placeholder="course time ex:(2017/20221 , 2017-2021)" name="course2year"/>
+            <label htmlFor="">how much knowledge did you gain ?</label>
+            <input className="form-control" type="text" placeholder="ex:(98% , 98/100 , Master)" name="course2rank"/>
+
+            {/* Skills & Languages */}
+
+            <label htmlFor="">Technical Skills (separate with "," and always end with ".")</label>
+            <input type="text" name="technicalskills" className="form-control" placeholder="ex:(C,Python,Java.)"/>
+            <label htmlFor="">Soft Skills (separate with "," and always end with ".")</label>
+            <input type="text" name="softskills" className="form-control" placeholder="ex:(cmmunication,team-work,leadership.)"/>
+
+            <label>Languages <span>({language.length} Added)</span></label>
+            <div>
+           <input type="text" placeholder="Type Language" className="form-control" value={typeLanguage} onChange={(e)=>{
+            setTypeLanguage(e.target.value)
+           }}/>
+           <br/>
+            <select class="form-select" aria-label="Default select example" style={({backgroundColor:"white"})} onChange={(e)=>{
+                setSelectLanguage(e.target.value);
+            }}>
+            <option selected>Scale On Language</option>
+            <option value="Native">Native</option>
+            <option value="Basic">Basic</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Fluent">Fluent</option>
+            </select>
+
+            <div className={styled.languageaddbox} onClick={(e)=>languageControl(e)}>ADD</div>
+
+            </div>
+
+           <button className={styled.submitbutton}>Submit Data</button>
         </form>
        </div>
 
         <button onClick={()=>{
             handleBuild()
-        }}>Build This</button>
+        }} className={styled.buildthis}>Build This</button>
 
         <div ref={componentRef} className={styled.container}>
            <div className={styled.left}>
@@ -65,12 +158,78 @@ function Resume1(){
 
                 <div>
                     <div className={styled.professionlinetop}></div>
+                    <div className={styled.professionname}>{!data ? "Software Engineer" : data.profession}</div>
+                    <div className={styled.professionlinebottom}></div>
                 </div>
-               <div>{!data ? "proffesion" : data.profession}</div>
-               <div>
-                <div>career objective</div>
-                <div>{!data ? "Personable, driven human resources specialist looking to secure a role with KPM Public Schools. Previous experience as an intern with park service, which included helping interview potential part-time personnel. Experience in onboarding new employees, as well as running fingerprinting and background checks. Seeking an opportunity to utilise these skills as a part-time HR Specialist Assistant." : data.careerobjective}</div>
+
+                {/* proffestion enda */}
+               
+
+
+                {/* career , edu , skill & lan */}
+
+
+                <div className={styled.leftitems}>
+
+                {/* career objective starts */}
+               <div className={styled.career}>
+                <div className={styled.careername}>career objective</div>
+                <div className={styled.careerdata}>{!data ? "Dedicated and detail-oriented aspiring full-stack developer with specialization in MERN stack Development. Self-motivated and curious, with a keen interest in building user-friendly products. Looking forward to honing my skills in a challenging work environment." : data.careerobjective}</div>
                </div>
+                {/* career objective Ends */}
+
+                {/* Education Starts */}
+
+                <div>
+                    <div className={styled.eduname}>education</div>
+                    <div className={styled.collegecontainer}>
+                    <div>
+                        <div className={styled.collegename}>{!data ? "VR Siddhartha Engineering College"  : data.course1name}</div>
+                        <div className={styled.collegecourse}>{!data ? "Mechanical" : data.course1course}</div>
+                        <div>{!data ? "2017-2022" : data.course1year}</div>
+                        <div>FinalVote: {!data ? "65%" : data.course1rank}</div>
+                    </div>
+                    <div>
+                        <div className={styled.collegename}>{!data ? "Sri Chaithanya Junior College"  : data.course2name}</div>
+                        <div className={styled.collegecourse}>{!data ? "MPC" : data.course2course}</div>
+                        <div>{!data ? "2015-2017" : data.course2year}</div>
+                        <div>FinalVote: {!data ? "93%" : data.course2rank}</div>
+                    </div>
+                    </div>
+                </div>
+
+                {/* Skills And Lnguages */}
+
+                <div className={styled.skillsandlnguages}>
+                    <div className={styled.skills}>
+                        <div className={styled.skillsname}>skills</div>
+                        <div>
+                            <div className={styled.techskills}>Technical</div>
+                            <div className={styled.technicalskillslist}>{!data ? "Reactjs | NodeJs | Java." : data.technicalskills}</div>
+                        </div>
+                        <div>
+                            <div className={styled.softskills}>Soft</div>
+                            <div className={styled.softskillslist}>{!data ? "Communication,Teamwork,Leadership." : data.softskills}</div>
+                        </div>
+                    </div>
+                    <div className={styled.languages}>
+                        <div className={styled.languagesname}>
+                           languages
+                        </div>
+                        <div className={styled.languageslist}>
+                           {language.map((e)=>{
+                            return(<div key={e.name}>{e.name}-{e.range}</div>)
+                           })}
+                        </div>
+                    </div>
+                </div>
+
+
+                </div>
+
+
+
+
                </div>
                {/* Left Page end */}
            </div>

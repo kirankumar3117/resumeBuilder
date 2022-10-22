@@ -3,6 +3,8 @@
     height:1697px;
     display:flex;
     color:rgba(3, 3, 3, 0.767);
+    font-family: sans-serif;
+    margin-top:30px;
 }
 .left{
     width:51%;
@@ -14,20 +16,144 @@
     background-image: linear-gradient(rgb(241, 247, 252), rgb(218, 234, 248));
 }
 .leftcontainer{
-    width:70%;
-    margin-left:15%;
-    font-size:25px;
-    margin-top:20%;
-    height:90%;
+    width:80%;
+    margin-left:11%;
+    font-size:22px;
+    margin-top:15%;
+    height:92%;
+    color:rgb(99, 98, 98);
 }
 .namecontainer>h1{
-    font-size:65px;
+    font-size:77px;
     font-family:  Calibri;
+    color:rgb(75, 74, 74);
 }
 .professionlinetop{
     width:100%;
     height:3px;
     background-color:  rgb(161, 208, 247);
-    margin-top:50px;
+    margin-top:40px;
+}
+.professionname{
+    font-size:43px;
+    font-weight: lighter;
+   margin-top:20px;
+}
+.professionlinebottom{
+    width:100%;
+    height:3px;
+    background-color:  rgb(161, 208, 247);
+    margin-top:15px;
 }
 
+
+.careername{
+    font-weight: bold;
+    font-size:32px;
+    margin-top: 20px;
+    font-variant: small-caps;
+    color:rgb(75, 74, 74);
+}
+.careerdata{
+    margin-top:25px;
+}
+.eduname{
+    font-weight: bold;
+    font-size:32px;
+    margin-top:30px;
+    font-variant: small-caps;
+    color:rgb(75, 74, 74);
+}
+.collegename{
+    font-weight:bold;
+    color:rgb(92, 91, 91);
+    margin-top:18px;
+
+}
+.collegecourse{
+    margin-top:10px;
+}
+
+.skillsandlnguages{
+    margin-top:15px;
+}
+.skillsandlnguages{
+    width:100%;
+    height:368px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.skillsname{
+    font-weight: 900;
+    font-size:32px;
+    font-variant: small-caps;
+    color:rgb(75, 74, 74);
+}
+.languagesname{
+    font-weight: 900;
+    font-size:29px;
+    font-variant: small-caps;
+    color:rgb(75, 74, 74);
+}
+.techskills{
+    font-weight:bold;
+
+}
+.softskills{
+    font-weight:bold;
+    margin-top:5px;
+}
+.technicalskillslist{
+    font-size:21px;
+    margin-top:5px;
+    color:rgb(99, 98, 98);
+}
+.softskillslist{
+    font-size:21px;
+    margin-top:5px;
+    color:rgb(99, 98, 98);
+    margin-top:5px;
+}
+.languagesselect{
+   font-size:22px;
+   font-weight: bold;
+}
+.languageaddbox{
+    width:100px;
+    border:2px solid black;
+    background-color:white;
+    font-size:19px;
+    color:black;
+    text-align:center;
+    cursor:pointer;
+}
+.languageslist{
+    font-size:21px;
+    margin-top:5px;
+    color:rgb(99, 98, 98);
+    margin-top:5px;
+    line-height: 30px;
+}
+
+
+.submitbutton{
+    width:320px;
+    height:50px;
+    text-align: center;
+    border:5px solid rgb(62, 62, 165);
+     background-image: linear-gradient(rgb(134, 193, 241), rgb(7, 136, 250));
+     border-radius: 7rem;
+     margin-top:20px;
+     cursor:pointer;
+}
+.buildthis{
+    width:320px;
+    height:50px;
+    text-align: center;
+    border:5px solid rgb(105, 126, 14);
+     background-image: linear-gradient(rgba(246, 250, 2, 0.541), rgb(250, 193, 7));
+     border-radius: 7rem;
+     margin-top:20px;
+     cursor:pointer;
+}
