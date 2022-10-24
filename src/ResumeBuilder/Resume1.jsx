@@ -52,6 +52,9 @@ function Resume1(){
        let interests=e.target.interests.value;
        interests=interests.split(",").join(" | ")
 
+       let projecttechskills=e.target.projecttechskills.value;
+       projecttechskills=projecttechskills.split(",").join(" | ")
+
        let certifications=e.target.certifications.value;
        certifications=certifications.split("/");
 
@@ -80,6 +83,8 @@ function Resume1(){
             mobilenumber:e.target.mobilenumber.value,
             email:e.target.email.value,
             certifications:certifications.length>0 ? certifications : [],
+            projectabout:e.target.projectabout.value,
+            projecttechskills:projecttechskills,
         }
        setData({...obj});
 
@@ -356,15 +361,15 @@ function Resume1(){
                                     <div className={styled.projectname}>
                                        project
                                     </div>
+                                    {!data ? null :
+                                    <div>
                                     <div className={styled.projectabout}>
-                                    From the beginning of my career, I
-                                    started working as a freelancer with a
-                                    range of different clients who allowed
-                                    me to learn in many different fields,
-                                    thus broadening my skills.
+                                    {data.projectabout}
 
                                     </div>
-                                    <div style={({fontSize:"18px"})}><span style={({fontWeight:"bold"})}>Tech Skills: </span>HTML5 | CSS3.</div>
+                                    <div style={({fontSize:"18px"})}><span style={({fontWeight:"bold"})}>Tech Skills: </span>{data.projecttechskills}</div>
+                                    </div>
+                                    }
                                 </div>
                            </div>
                            {/* project details ends */}
