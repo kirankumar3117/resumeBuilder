@@ -1,6 +1,9 @@
 import React, { useRef, useState } from "react";
 import {useReactToPrint} from "react-to-print"
 import styled from './Resume1.module.css'
+import {IoIosCall} from "react-icons/io"
+import {GrMail} from "react-icons/gr"
+import {AiOutlineGlobal} from "react-icons/ai"
 
 function Resume1(){
     const componentRef=useRef();
@@ -8,13 +11,15 @@ function Resume1(){
    const [language,setLanguage]=useState([]);
    const [typeLanguage,setTypeLanguage]=useState("");
    const [selectLanguage,setSelectLanguage]=useState("");
+   const [image,setImage]=useState(null);
+   const [portfolio,setPortfolio]=useState(false)
 
    const languageControl=(e)=>{
         let data={
             name:typeLanguage,
             range:selectLanguage
         }
-       if(!typeLanguage){
+       if(!typeLanguage || selectLanguage.length==0){
         alert("Enter All Language Fields")
        }
        else{
@@ -43,6 +48,17 @@ function Resume1(){
        techskills=techskills.split(",").join(" | ")
        let softskills=e.target.softskills.value;
        softskills=softskills.split(",").join(" | ")
+       
+       let interests=e.target.interests.value;
+       interests=interests.split(",").join(" | ")
+
+       let certifications=e.target.certifications.value;
+       certifications=certifications.split("/");
+
+       if(e.target.portfolio.value){
+        setPortfolio(true)
+       }
+
         let obj={
             firstname:e.target.firstname.value,
             lastname:e.target.lastname.value,
@@ -59,6 +75,11 @@ function Resume1(){
             technicalskills:techskills,
             softskills:softskills,
             languages:language,
+            interests:interests,
+            portfolio: e.target.portfolio.value,
+            mobilenumber:e.target.mobilenumber.value,
+            email:e.target.email.value,
+            certifications:certifications.length>0 ? certifications : [],
         }
        setData({...obj});
 
@@ -69,14 +90,17 @@ function Resume1(){
        
        <div>
         <form action="" onSubmit={(e)=>{handleSubmit(e)}} class="form-group">
+
+            {/* leftside data */}
+            <div>
             <label htmlFor="">First Name</label>
-            <input type="text"  name="firstname" class="form-control"/>
+            <input type="text"  name="firstname" class="form-control" required/>
             <label htmlFor="">Last Name</label>
             <input type="text"  name="lastname" class="form-control"/>
             <label>profession <span style={({fontSize:"10px"})}>ex: (Fullstack Developer,Copy Writer)</span></label>
             <input type="text" class="form-control" name="profession"/>
             <label htmlFor="">Creer Objective</label>
-            <textarea name="careerobjective" rows="4" cols="35" className="form-control" defaultValue={"Dedicated and detail-oriented aspiring full-stack developer with specialization in MERN stack Development. Self-motivated and curious, with a keen interest in building user-friendly products. Looking forward to honing my skills in a challenging work environment."}></textarea>
+            <textarea name="careerobjective" rows="4" cols="35" className="form-control" defaultValue={"A motivated individual with in-depth knowledge of languages and development tools, seeking a position in a growth-oriented company where I can use my skills to the advantage of the company while having the scope to develop my own skills."}></textarea>
 
             {/* INPUT EDUCATION */}
 
@@ -106,9 +130,9 @@ function Resume1(){
             {/* Skills & Languages */}
 
             <label htmlFor="">Technical Skills (separate with "," and always end with ".")</label>
-            <input type="text" name="technicalskills" className="form-control" placeholder="ex:(C,Python,Java.)"/>
+            <input type="text" name="technicalskills" className="form-control" defaultValue={"C,Python,Java"}/>
             <label htmlFor="">Soft Skills (separate with "," and always end with ".")</label>
-            <input type="text" name="softskills" className="form-control" placeholder="ex:(cmmunication,team-work,leadership.)"/>
+            <input type="text" name="softskills" className="form-control" defaultValue={"Communication,Teamwork,Leadership."}/>
 
             <label>Languages <span>({language.length} Added)</span></label>
             <div>
@@ -118,7 +142,7 @@ function Resume1(){
            <br/>
             <select class="form-select" aria-label="Default select example" style={({backgroundColor:"white"})} onChange={(e)=>{
                 setSelectLanguage(e.target.value);
-            }}>
+            }} value={selectLanguage}>
             <option selected>Scale On Language</option>
             <option value="Native">Native</option>
             <option value="Basic">Basic</option>
@@ -129,6 +153,42 @@ function Resume1(){
             <div className={styled.languageaddbox} onClick={(e)=>languageControl(e)}>ADD</div>
 
             </div>
+
+                {/* Habbits */}
+
+            <label>Habbits</label>
+            <input type="text" name="interests" defaultValue={"Running,Reading-Books,Netflix."} className="form-control"/>
+
+
+            </div>
+
+            {/* ----------left side data ends-------------- */}
+
+            
+            {/*-----Right side data start */}
+            <div>
+                <label htmlFor="">Image file</label>
+                <input type="file" onChange={(event)=>{
+                    if (event.target.files && event.target.files[0]) {
+                        setImage(URL.createObjectURL(event.target.files[0]));
+                      }
+                }} className="form-control"/>
+                <label>Mobile number include country code</label>
+                <input type="text" placeholder={"ex:(+91 9874561230"} name="mobilenumber" className="form-control"/>
+                <label>Email</label>
+                <input type="email" name="email" className="form-control"/>
+                <label>Personal Website (Not manedatory)</label>
+                <input type="text" name="portfolio" className="form-control"/>
+                <label htmlFor="">Project Details</label>
+                <textarea type="text" placeholder="about the project" name="projectabout" rows="3" cols="30" className="form-control"></textarea>
+                <br/>
+                <input type="text" placeholder="Techskills used in project ex:(HTML5,CSS3.)" name="projecttechskills" className="form-control" />
+
+                <label htmlFor="">Certifications</label>
+                <textarea type="text" placeholder="seperate each certificate with /  " className="form-control" name="certifications"></textarea>
+
+            </div>
+            {/*-----Right side data ends */}
 
            <button className={styled.submitbutton}>Submit Data</button>
         </form>
@@ -174,7 +234,7 @@ function Resume1(){
                 {/* career objective starts */}
                <div className={styled.career}>
                 <div className={styled.careername}>career objective</div>
-                <div className={styled.careerdata}>{!data ? "Dedicated and detail-oriented aspiring full-stack developer with specialization in MERN stack Development. Self-motivated and curious, with a keen interest in building user-friendly products. Looking forward to honing my skills in a challenging work environment." : data.careerobjective}</div>
+                <div className={styled.careerdata}>{!data ? "A motivated individual with in-depth knowledge of languages and development tools, seeking a position in a growth-oriented company where I can use my skills to the advantage of the company while having the scope to develop my own skills." : data.careerobjective}</div>
                </div>
                 {/* career objective Ends */}
 
@@ -204,11 +264,11 @@ function Resume1(){
                     <div className={styled.skills}>
                         <div className={styled.skillsname}>skills</div>
                         <div>
-                            <div className={styled.techskills}>Technical</div>
+                            <div className={styled.techskills}>Technical skills</div>
                             <div className={styled.technicalskillslist}>{!data ? "Reactjs | NodeJs | Java." : data.technicalskills}</div>
                         </div>
                         <div>
-                            <div className={styled.softskills}>Soft</div>
+                            <div className={styled.softskills}>Soft skills</div>
                             <div className={styled.softskillslist}>{!data ? "Communication,Teamwork,Leadership." : data.softskills}</div>
                         </div>
                     </div>
@@ -224,6 +284,11 @@ function Resume1(){
                     </div>
                 </div>
 
+                <div>
+                    <div className={styled.interestsname}>INTERESTS</div>
+                    <div className={styled.interestslist}>{!data ? "Reading-Books | Netflix | Running | Projects with Blender." : data.interests}</div>
+                </div>
+
 
                 </div>
 
@@ -234,11 +299,97 @@ function Resume1(){
                {/* Left Page end */}
            </div>
 
-           <hr/>
+          
 
             <div className={styled.right}>
+                <div className={styled.imagediv}>
+                <img src={!image ? "https://cdn.pixabay.com/photo/2020/06/07/07/03/girl-5269312_960_720.jpg" : image} alt="preview image" />
+                </div>
+
+
+                {/* right container */}
+
+                <div className={styled.rightcontainer}>
+
+
+
+
+
+
+                {/* contacts */}
+                <div>
+                    <div className={styled.contactsname}>contacts</div>
+                    <div>
+                        <div className={styled.contactdata}>
+                            <div className={styled.contactnumber}>
+                            <div className={styled.callicondiv}><IoIosCall size="25px" className={styled.callicon}/>
+                            </div>
+                            <div className={styled.mobilenumber}>{!data ? "+91 9876543210" : data.mobilenumber}</div>
+                            </div>
+
+                            <div className={styled.contactmail}>
+                                <div>
+                                     <GrMail size="33px" className={styled.mailicon}/>
+                                </div>
+                                <div className={styled.mailid}>
+                                   {!data ? "example.gmail.com" : data.email}
+                                </div>
+                            </div>
+
+                            {portfolio ?<div className={styled.contactportfolio}>
+                                <div>
+                                   <AiOutlineGlobal size="33px" className={styled.portfolioicon}/>
+                                </div>
+                                <div className={styled.portfolio}>
+                                 {!data ? null : data.portfolio}
+                                </div>
+                            </div> : null}
+                            
+                        </div>
+                    </div>
+                </div>
+                {/* contact ends */}
+           
+                           {/* project details starts */}
+                           <div>
+                                <div>
+                                    <div className={styled.projectname}>
+                                       project
+                                    </div>
+                                    <div className={styled.projectabout}>
+                                    From the beginning of my career, I
+                                    started working as a freelancer with a
+                                    range of different clients who allowed
+                                    me to learn in many different fields,
+                                    thus broadening my skills.
+
+                                    </div>
+                                    <div style={({fontSize:"18px"})}><span style={({fontWeight:"bold"})}>Tech Skills: </span>HTML5 | CSS3.</div>
+                                </div>
+                           </div>
+                           {/* project details ends */}
+
+
+                           {/* certifications starts */}
+                           <div>
+                                <div className={styled.certifications}>certifications</div>
+                                <div>
+                                   {!data ? null : <div>
+                                    
+                                    {data.certifications.map((e)=>{
+                                        return<li>{e}</li>
+                                    })}
+                                    </div>}
+                                </div>
+                           </div>
+                           {/* certifications ends */}
+                </div>
+
+                {/* right container ends */}
 
             </div>
+
+            {/* right  ends */}
 
         </div>
 
