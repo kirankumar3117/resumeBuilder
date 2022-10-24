@@ -58,6 +58,9 @@ function Resume1(){
        let certifications=e.target.certifications.value;
        certifications=certifications.split("/");
 
+       let extracurricular=e.target.extracurricular.value;
+       extracurricular=extracurricular.split("/");
+
        if(e.target.portfolio.value){
         setPortfolio(true)
        }
@@ -85,6 +88,11 @@ function Resume1(){
             certifications:certifications.length>0 ? certifications : [],
             projectabout:e.target.projectabout.value,
             projecttechskills:projecttechskills,
+            projectoutcome:e.target.projectoutcome.value,
+            projectname:e.target.projectname.value,
+            extracurricular:extracurricular.length>0 ? extracurricular : [],
+            internshiptitle:e.target.internshiptitle.value,
+            internshipabout:e.target.internshipabout,
         }
        setData({...obj});
 
@@ -185,12 +193,19 @@ function Resume1(){
                 <label>Personal Website (Not manedatory)</label>
                 <input type="text" name="portfolio" className="form-control"/>
                 <label htmlFor="">Project Details</label>
+                <input type="text" name="projectname" placeholder="project name" className="form-control"/>
                 <textarea type="text" placeholder="about the project" name="projectabout" rows="3" cols="30" className="form-control"></textarea>
                 <br/>
                 <input type="text" placeholder="Techskills used in project ex:(HTML5,CSS3.)" name="projecttechskills" className="form-control" />
+                <textarea type="text" className="form-control" placeholder="project outcome in a single line" name="projectoutcome"></textarea>
 
                 <label htmlFor="">Certifications</label>
                 <textarea type="text" placeholder="seperate each certificate with /  " className="form-control" name="certifications"></textarea>
+                <label htmlFor="">Extra Curricular (not manedatory and try to add only one )</label>
+                <textarea type="text" placeholder="seperate each certificate with /  " className="form-control" name="extracurricular"></textarea>
+                <label>Internship</label>
+                <input type="text" className="form-control" name="interbshiptitle" />
+                <textarea type="text" placeholder="about internship" className="form-control" name="internshipabout"></textarea>
 
             </div>
             {/*-----Right side data ends */}
@@ -361,13 +376,16 @@ function Resume1(){
                                     <div className={styled.projectname}>
                                        project
                                     </div>
+                                    <div style={({fontWeight:"bold",fontSize:"23px"})}>{!data ? null : data.projectname}</div>
                                     {!data ? null :
                                     <div>
                                     <div className={styled.projectabout}>
                                     {data.projectabout}
 
                                     </div>
-                                    <div style={({fontSize:"18px"})}><span style={({fontWeight:"bold"})}>Tech Skills: </span>{data.projecttechskills}</div>
+                                    <div style={({fontSize:"18px",marginTop:"7px"})}><span style={({fontWeight:"bold"})}>Tech Stack: </span>{data.projecttechskills}</div>
+
+                                    <div style={({fontSize:"18px",marginTop:"7px"})}><span style={({fontWeight:"bold"})}>Outcome: </span>{data.projectoutcome}</div>
                                     </div>
                                     }
                                 </div>
@@ -382,12 +400,49 @@ function Resume1(){
                                    {!data ? null : <div>
                                     
                                     {data.certifications.map((e)=>{
-                                        return<li>{e}</li>
+                                        return<div style={({display:"flex"})}>
+                                            <li ></li><div>{e}</div>
+                                        </div>
                                     })}
                                     </div>}
                                 </div>
                            </div>
                            {/* certifications ends */}
+
+
+                            {/* internship starts */}
+                            <div>
+                                <div className={styled.internshipname}>internship</div>
+                                <div style={({fontWeight:"bold"})}>{!data ? "internship title" : data.internshiptitle}</div>
+                                <div className={styled.internshipabout}>
+                                    {!data ? "Tell about internship Tell about internship Tell about internship Tell about internship Tell about internship Tell about internship Tell about internship" : data.internshipabout}
+                                </div>
+                            </div>
+                            {/* internship ends */}
+
+
+
+
+                           {/*Extra curricular */}
+                           <div>
+                                   {!data ? null : !data.extracurricular ? null : <div>
+
+                                    <div className={styled.extracurricularname}>EXTRA-CURRICULAR</div>
+                                    <div>
+                                   {!data ? null : <div>
+                                    
+                                    {data.extracurricular.map((e)=>{
+                                        return<div style={({display:"flex"})}>
+                                            <li ></li><div>{e}</div>
+                                        </div>
+                                    })}
+                                    </div>}
+                                </div>
+                                   </div>  
+                                   }
+                           </div>
+                           {/*Extra curricular */}
+                           
                 </div>
 
                 {/* right container ends */}
