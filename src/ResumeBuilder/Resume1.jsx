@@ -13,6 +13,8 @@ function Resume1(){
    const [selectLanguage,setSelectLanguage]=useState("");
    const [image,setImage]=useState(null);
    const [portfolio,setPortfolio]=useState(false)
+   const [extracert,setExtracert]=useState(false)
+   const [intern,setIntern]=useState(false)
 
    const languageControl=(e)=>{
         let data={
@@ -61,8 +63,16 @@ function Resume1(){
        let extracurricular=e.target.extracurricular.value;
        extracurricular=extracurricular.split("/");
 
+       if(extracurricular.length>0){
+           setExtracert(true)
+       }
+
        if(e.target.portfolio.value){
         setPortfolio(true)
+       }
+
+       if(e.target.internshiptitle.value.length>0){
+        setIntern(true)
        }
 
         let obj={
@@ -90,9 +100,9 @@ function Resume1(){
             projecttechskills:projecttechskills,
             projectoutcome:e.target.projectoutcome.value,
             projectname:e.target.projectname.value,
-            extracurricular:extracurricular.length>0 ? extracurricular : [],
+            extracurricular:extracurricular,
             internshiptitle:e.target.internshiptitle.value,
-            internshipabout:e.target.internshipabout,
+            internshipabout:e.target.internshipabout.value,
         }
        setData({...obj});
 
@@ -204,11 +214,21 @@ function Resume1(){
                 <label htmlFor="">Extra Curricular (not manedatory and try to add only one )</label>
                 <textarea type="text" placeholder="seperate each certificate with /  " className="form-control" name="extracurricular"></textarea>
                 <label>Internship</label>
-                <input type="text" className="form-control" name="interbshiptitle" />
+                <input type="text" className="form-control" name="internshiptitle" placeholder="Intern ship Title"/>
                 <textarea type="text" placeholder="about internship" className="form-control" name="internshipabout"></textarea>
 
             </div>
             {/*-----Right side data ends */}
+
+            {/* <select class="form-select" aria-label="Default select example" style={({backgroundColor:"white"})} onChange={(e)=>{
+                setSelectLanguage(e.target.value);
+            }} value={selectLanguage}>
+            <option selected>Scale On Language</option>
+            <option value="Native">Native</option>
+            <option value="Basic">Basic</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Fluent">Fluent</option>
+            </select> */}
 
            <button className={styled.submitbutton}>Submit Data</button>
         </form>
@@ -411,22 +431,20 @@ function Resume1(){
 
 
                             {/* internship starts */}
-                            <div>
+                            {intern ? <div>
                                 <div className={styled.internshipname}>internship</div>
-                                <div style={({fontWeight:"bold"})}>{!data ? "internship title" : data.internshiptitle}</div>
+                                <div style={({fontWeight:"bold"})}>{!data ? "internship title" : data.internshiptitle }</div>
                                 <div className={styled.internshipabout}>
                                     {!data ? "Tell about internship Tell about internship Tell about internship Tell about internship Tell about internship Tell about internship Tell about internship" : data.internshipabout}
                                 </div>
-                            </div>
+                            </div> : null}
                             {/* internship ends */}
 
 
 
 
                            {/*Extra curricular */}
-                           <div>
-                                   {!data ? null : !data.extracurricular ? null : <div>
-
+                          {extracert ?  <div>                               
                                     <div className={styled.extracurricularname}>EXTRA-CURRICULAR</div>
                                     <div>
                                    {!data ? null : <div>
@@ -438,9 +456,8 @@ function Resume1(){
                                     })}
                                     </div>}
                                 </div>
-                                   </div>  
-                                   }
-                           </div>
+                                  
+                           </div> : null}
                            {/*Extra curricular */}
                            
                 </div>
