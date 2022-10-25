@@ -63,7 +63,7 @@ function Resume1(){
        let extracurricular=e.target.extracurricular.value;
        extracurricular=extracurricular.split("/");
 
-       if(extracurricular.length>0){
+       if(e.target.extracurricular.value.length>0){
            setExtracert(true)
        }
 
@@ -444,7 +444,7 @@ function Resume1(){
 
 
                            {/*Extra curricular */}
-                          {extracert ?  <div>                               
+                          {extracert==true ?  <div>                               
                                     <div className={styled.extracurricularname}>EXTRA-CURRICULAR</div>
                                     <div>
                                    {!data ? null : <div>

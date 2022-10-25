@@ -49,6 +49,7 @@
 
 @media screen and (max-width:420px){
     .container{
+        width:100%;
         height:70vh;
         margin-top:7px;
         gap:30px;
