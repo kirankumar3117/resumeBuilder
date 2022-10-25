@@ -1,24 +1,16 @@
-import resume1 from "../asserts/SirishaResume.pdf"
-import resume2 from "../asserts/KiranKumar_Resume.pdf"
+import resume1 from "../asserts/Resume1.pdf"
+
 
 
 export const resumeAsserts=[
     {
-        noPages:[1,2],
-        resumeName:"SirishaResume.pdf",
-        image:"https://i.postimg.cc/dQkRqM6w/Capture.png",
+        noPages:[1],
+        resumeName:"Resume1.pdf",
+        image:"https://i.postimg.cc/x8BBg7q1/Capture.png",
         name:"resume1",
         resume:resume1,
         keypoints:["build a you wih"]},
 
-    {
-        noPages:[1],
-        resumeNane:"KiranKumar_Resume.pdf",
-        image:"https://i.postimg.cc/dQkRqM6w/Capture.png",
-        name:"resume2",
-        resume:resume2,
-        keypoints:["require","nothing"]
-
-    },
+   
    
 ]

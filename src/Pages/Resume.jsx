@@ -3,7 +3,8 @@ import {Document,Page,pdfjs} from "react-pdf"
 import styled from "./Resume.module.css";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import {resumeAsserts} from "../asserts/resumeAsserts"
 
 
 
@@ -14,29 +15,50 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 export const Resume=(props)=>{
     const navigate=useNavigate();
+    const [resumeData,setResumeData]=useState(null);
 
-const {resumeData}=useSelector((state)=>state.viewresume)
+    const {name}=useParams();
+  
+    
+    
+
+
 
 const handleResumePages=()=>{
     console.log("hgh")
-    if(resumeData.name=="resume1"){
-        navigate("/resume1")
-    }
+    navigate(  `/${resumeData.name}`)
 }
 
 const documentt=[];
     useEffect(()=>{
-       for(var i=1;i<=resumeData.noPages;i++){
-        documentt.push(<Page pageNumber={i} scale={1.079}/>)
-       }
-       console.log(documentt)
+        resumeAsserts.filter(e=>{
+            if(e.name==name){
+              setResumeData(e);
+              console.log(e,resumeData)
+              return;
+            }
+        })
+        if(resumeData){
+            for(var i=1;i<=resumeData.noPages;i++){
+                documentt.push(<Page pageNumber={i} scale={1.079}/>)
+            }
+                  
+        }
+    
     },[resumeData])
+
+    if(!resumeData){
+        return(<div>Loading...</div>)
+    }
     return(
+
         <div className={styled.container}>
+           
+          
             <div className={styled.left}> 
             {resumeData.noPages.map((e)=>{
                 return( <div><Document file={resumeData.resume}> 
-                    <Page pageNumber={e} scale={1.079}/>
+                    <Page pageNumber={e} scale={0.75}/>
                     
                    {documentt.map(e=>{
                     return React.rendor(e)
