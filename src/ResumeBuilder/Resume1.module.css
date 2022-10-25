@@ -8,11 +8,11 @@
 .left{
     width:51%;
     background-color:rgb(255, 255, 255);
-    border-right: 3.3px dotted rgb(161, 208, 247);
+    border-right: 3.3px dotted rgb(247, 188, 161);
 }
 .right{
     width:49%;
-    background-color:rgb(241, 247, 252);
+    background-color:rgb(252, 244, 241);
 }
 .leftcontainer{
     width:80%;
@@ -159,8 +159,11 @@
      cursor:pointer;
 }
 .interestsname{
+    font-weight: bold;
+    font-size:30px;
     margin-top:7px;
-    font-weight:bold;
+    font-variant: small-caps;
+    color:rgb(75, 74, 74);
     
     /* font-variant: small-caps; */
 }
@@ -265,7 +268,10 @@
 }
 .extracurricularname{
     font-weight: bold;
+    font-size:30px;
     margin-top: 10px;
+    font-variant: small-caps;
+    color:rgb(75, 74, 74);
 }
 .internshipname{
     font-weight: bold;
@@ -273,4 +279,10 @@
     margin-top: 10px;
     font-variant: small-caps;
     color:rgb(75, 74, 74);
+}
+
+.changecolor>option{
+    height:50px;
+    border:1px solid black;
+  
 }

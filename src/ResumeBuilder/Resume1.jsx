@@ -15,6 +15,30 @@ function Resume1(){
    const [portfolio,setPortfolio]=useState(false)
    const [extracert,setExtracert]=useState(false)
    const [intern,setIntern]=useState(false)
+   const [lightColor,setLightColor]=useState("rgb(241, 247, 252)")
+   const [darkColor,setDarkColor]=useState("rgb(161, 208, 247)")
+
+   const handleColor=(e)=>{
+    setLightColor(e.target.value)
+    if(e.target.value=="rgb(255, 255, 255)"){
+        setDarkColor("rgb(128, 128, 128)")
+    }
+    else if(e.target.value=="rgb(241, 247, 252)"){
+        setDarkColor("rgb(161, 208, 247)")
+    }
+    else if(e.target.value=="rgb(252, 241, 241)"){
+        setDarkColor("rgb(247, 161, 161)")
+    }
+    else if(e.target.value=="rgb(252, 244, 241)"){
+        setDarkColor("rgb(247, 188, 161)")
+    }
+    else if(e.target.value=="rgb(244, 252, 241)"){
+        setDarkColor("rgb(207, 247, 161)")
+    }
+    else if(e.target.value=="rgb(245, 241, 252)"){
+        setDarkColor("rgb(191, 161, 247)")
+    }
+   }
 
    const languageControl=(e)=>{
         let data={
@@ -41,6 +65,8 @@ function Resume1(){
         onafterprint:()=> alert("Document Priented Successfully...(: "),
        
     })
+
+    // this data field serve the major purpose
 
     const [data,setData]=useState(null);
 
@@ -119,11 +145,11 @@ function Resume1(){
             <label htmlFor="">First Name</label>
             <input type="text"  name="firstname" class="form-control" required/>
             <label htmlFor="">Last Name</label>
-            <input type="text"  name="lastname" class="form-control"/>
+            <input type="text"  name="lastname" class="form-control" required/>
             <label>profession <span style={({fontSize:"10px"})}>ex: (Fullstack Developer,Copy Writer)</span></label>
-            <input type="text" class="form-control" name="profession"/>
+            <input type="text" class="form-control" name="profession" required/>
             <label htmlFor="">Creer Objective</label>
-            <textarea name="careerobjective" rows="4" cols="35" className="form-control" defaultValue={"A motivated individual with in-depth knowledge of languages and development tools, seeking a position in a growth-oriented company where I can use my skills to the advantage of the company while having the scope to develop my own skills."}></textarea>
+            <textarea name="careerobjective" rows="4" cols="35" className="form-control" defaultValue={"A motivated individual with in-depth knowledge of languages and development tools, seeking a position in a growth-oriented company where I can use my skills to the advantage of the company while having the scope to develop my own skills."} required></textarea>
 
             {/* INPUT EDUCATION */}
 
@@ -132,30 +158,30 @@ function Resume1(){
             {/* COURSE 1 */}
 
             <label>course 1</label>
-            <input className="form-control" type="text" placeholder="School/College name" name="course1name"/>
+            <input className="form-control" type="text" placeholder="School/College name" name="course1name" required/>
             <br/>
-            <input className="form-control" type="text" placeholder="course name ex:(compoter scince)" name="course1course"/>
+            <input className="form-control" type="text" placeholder="course name ex:(compoter scince)" name="course1course" required/>
             <br/>
-            <input className="form-control" type="text" placeholder="course time ex:(2017/20221 , 2017-2021)" name="course1year"/>
+            <input className="form-control" type="text" placeholder="course time ex:(2017/20221 , 2017-2021)" name="course1year" required/>
             <label htmlFor="">how much knowledge did you gain ?</label>
-            <input className="form-control" type="text" placeholder="ex:(98% , 98/100 , Master)" name="course1rank"/>
+            <input className="form-control" type="text" placeholder="ex:(98% , 98/100 , Master)" name="course1rank" required/>
 
             {/* COURSE 2 */}
             <label>course 2</label>
-            <input className="form-control" type="text" placeholder="School/College name " name="course2name"/>
+            <input className="form-control" type="text" placeholder="School/College name " name="course2name" required/>
             <br/>
-            <input className="form-control" type="text" placeholder="course name ex:(compoter scince)" name="course2course"/>
+            <input className="form-control" type="text" placeholder="course name ex:(compoter scince)" name="course2course" required/>
             <br/>
-            <input className="form-control" type="text" placeholder="course time ex:(2017/20221 , 2017-2021)" name="course2year"/>
+            <input className="form-control" type="text" placeholder="course time ex:(2017/20221 , 2017-2021)" name="course2year" required/>
             <label htmlFor="">how much knowledge did you gain ?</label>
-            <input className="form-control" type="text" placeholder="ex:(98% , 98/100 , Master)" name="course2rank"/>
+            <input className="form-control" type="text" placeholder="ex:(98% , 98/100 , Master)" name="course2rank" required/>
 
             {/* Skills & Languages */}
 
             <label htmlFor="">Technical Skills (separate with "," and always end with ".")</label>
-            <input type="text" name="technicalskills" className="form-control" defaultValue={"C,Python,Java"}/>
+            <input type="text" name="technicalskills" className="form-control" defaultValue={"C,Python,Java"} required/>
             <label htmlFor="">Soft Skills (separate with "," and always end with ".")</label>
-            <input type="text" name="softskills" className="form-control" defaultValue={"Communication,Teamwork,Leadership."}/>
+            <input type="text" name="softskills" className="form-control" defaultValue={"Communication,Teamwork,Leadership."} required/>
 
             <label>Languages <span>({language.length} Added)</span></label>
             <div>
@@ -180,7 +206,7 @@ function Resume1(){
                 {/* Habbits */}
 
             <label>Habbits</label>
-            <input type="text" name="interests" defaultValue={"Running,Reading-Books,Netflix."} className="form-control"/>
+            <input type="text" name="interests" defaultValue={"Running,Reading-Books,Netflix."} className="form-control" required/>
 
 
             </div>
@@ -197,38 +223,46 @@ function Resume1(){
                       }
                 }} className="form-control"/>
                 <label>Mobile number include country code</label>
-                <input type="text" placeholder={"ex:(+91 9874561230"} name="mobilenumber" className="form-control"/>
+                <input type="text" placeholder={"ex:(+91 9874561230"} name="mobilenumber" className="form-control" required/>
                 <label>Email</label>
-                <input type="email" name="email" className="form-control"/>
+                <input type="email" name="email" className="form-control" required/>
                 <label>Personal Website (Not manedatory)</label>
                 <input type="text" name="portfolio" className="form-control"/>
                 <label htmlFor="">Project Details</label>
-                <input type="text" name="projectname" placeholder="project name" className="form-control"/>
-                <textarea type="text" placeholder="about the project" name="projectabout" rows="3" cols="30" className="form-control"></textarea>
+                <input type="text" name="projectname" placeholder="project name" className="form-control" required/>
+                <textarea type="text" placeholder="about the project" name="projectabout" rows="3" cols="30" className="form-control" required></textarea>
                 <br/>
-                <input type="text" placeholder="Techskills used in project ex:(HTML5,CSS3.)" name="projecttechskills" className="form-control" />
-                <textarea type="text" className="form-control" placeholder="project outcome in a single line" name="projectoutcome"></textarea>
+                <input type="text" placeholder="Techskills used in project ex:(HTML5,CSS3.)" name="projecttechskills" className="form-control" required/>
+                <textarea type="text" className="form-control" placeholder="project outcome in a single line" name="projectoutcome" required></textarea>
 
-                <label htmlFor="">Certifications</label>
+                <label htmlFor="">Certifications </label>
                 <textarea type="text" placeholder="seperate each certificate with /  " className="form-control" name="certifications"></textarea>
                 <label htmlFor="">Extra Curricular (not manedatory and try to add only one )</label>
                 <textarea type="text" placeholder="seperate each certificate with /  " className="form-control" name="extracurricular"></textarea>
-                <label>Internship</label>
+                <label>Internship (Your choice)</label>
                 <input type="text" className="form-control" name="internshiptitle" placeholder="Intern ship Title"/>
+                <br/>
                 <textarea type="text" placeholder="about internship" className="form-control" name="internshipabout"></textarea>
 
             </div>
             {/*-----Right side data ends */}
 
-            {/* <select class="form-select" aria-label="Default select example" style={({backgroundColor:"white"})} onChange={(e)=>{
-                setSelectLanguage(e.target.value);
-            }} value={selectLanguage}>
-            <option selected>Scale On Language</option>
-            <option value="Native">Native</option>
-            <option value="Basic">Basic</option>
-            <option value="Intermediate">Intermediate</option>
-            <option value="Fluent">Fluent</option>
-            </select> */}
+            <br/>
+            <div>
+                <select className={`form-select ${styled.changecolor}`} aria-label="Default select example" style={({backgroundColor:"white"})} 
+                onChange={(e)=>handleColor(e)} >
+                <option selected>Change background Ccolor</option>
+                <option value="rgb(255, 255, 255)">plain</option>
+                <option value="rgb(241, 247, 252)">light blue</option>
+                <option value="rgb(252, 241, 241)">strong red</option>
+                <option value="rgb(252, 244, 241)">light red</option>
+                <option value="rgb(244, 252, 241)">light green</option>
+                <option value="rgb(245, 241, 252)">light purple</option>
+                </select>
+            </div>
+          
+
+           
 
            <button className={styled.submitbutton}>Submit Data</button>
         </form>
@@ -239,7 +273,7 @@ function Resume1(){
         }} className={styled.buildthis}>Build This</button>
 
         <div ref={componentRef} className={styled.container}>
-           <div className={styled.left}>
+           <div className={styled.left} style={({borderRight:`3.3px dotted ${darkColor}`})}>
               {/*Left page start*/}
               <div className={styled.leftcontainer}>
 
@@ -257,9 +291,9 @@ function Resume1(){
                 {/* proffestion starts */}
 
                 <div>
-                    <div className={styled.professionlinetop}></div>
+                    <div className={styled.professionlinetop} style={({backgroundColor:`${darkColor}`})}></div>
                     <div className={styled.professionname}>{!data ? "Software Engineer" : data.profession}</div>
-                    <div className={styled.professionlinebottom}></div>
+                    <div className={styled.professionlinebottom} style={({backgroundColor:`${darkColor}`})}></div>
                 </div>
 
                 {/* proffestion enda */}
@@ -325,7 +359,7 @@ function Resume1(){
                 </div>
 
                 <div>
-                    <div className={styled.interestsname}>INTERESTS</div>
+                    <div className={styled.interestsname}>interests</div>
                     <div className={styled.interestslist}>{!data ? "Reading-Books | Netflix | Running | Projects with Blender." : data.interests}</div>
                 </div>
 
@@ -341,7 +375,7 @@ function Resume1(){
 
           
 
-            <div className={styled.right}>
+            <div className={styled.right} style={({backgroundColor:`${lightColor}`})}>
                 <div className={styled.imagediv}>
                 <img src={!image ? "https://cdn.pixabay.com/photo/2020/06/07/07/03/girl-5269312_960_720.jpg" : image} alt="preview image" />
                 </div>
@@ -362,14 +396,14 @@ function Resume1(){
                     <div>
                         <div className={styled.contactdata}>
                             <div className={styled.contactnumber}>
-                            <div className={styled.callicondiv}><IoIosCall size="25px" className={styled.callicon}/>
+                            <div className={styled.callicondiv} style={({border:`2px solid ${darkColor}`})}><IoIosCall size="25px" className={styled.callicon} style={({color:`${darkColor}`})}/>
                             </div>
                             <div className={styled.mobilenumber}>{!data ? "+91 9876543210" : data.mobilenumber}</div>
                             </div>
 
                             <div className={styled.contactmail}>
                                 <div>
-                                     <GrMail size="33px" className={styled.mailicon}/>
+                                     <GrMail size="33px" className={styled.mailicon} style={({color:`${darkColor}`})}/>
                                 </div>
                                 <div className={styled.mailid}>
                                    {!data ? "example.gmail.com" : data.email}
@@ -378,7 +412,7 @@ function Resume1(){
 
                             {portfolio ?<div className={styled.contactportfolio}>
                                 <div>
-                                   <AiOutlineGlobal size="33px" className={styled.portfolioicon}/>
+                                   <AiOutlineGlobal size="33px" className={styled.portfolioicon} style={({color:`${darkColor}`})}/>
                                 </div>
                                 <div className={styled.portfolio}>
                                  {!data ? null : data.portfolio}
@@ -445,7 +479,7 @@ function Resume1(){
 
                            {/*Extra curricular */}
                           {extracert==true ?  <div>                               
-                                    <div className={styled.extracurricularname}>EXTRA-CURRICULAR</div>
+                                    <div className={styled.extracurricularname}>extra-curricular</div>
                                     <div>
                                    {!data ? null : <div>
                                     

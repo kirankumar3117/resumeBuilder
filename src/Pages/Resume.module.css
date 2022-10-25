@@ -30,6 +30,18 @@
     cursor:pointer;
     margin-top:10px;
 }
+.highpoints{
+    margin-left:10%;
+    width:80%;
+    background: rgb(236, 193, 190);
+    background: linear-gradient(90deg, rgb(236, 183, 181) 0%, rgb(189, 226, 179) 100%);
+    color:black;
+    font-family:cursive, sans-serif;
+}
+.mobilelook{
+    width:380px;
+    margin-left:10%;
+}
 
 @media screen and (max-width:420px){
     .container{
@@ -44,5 +56,12 @@
     .mainlist{
         width:fit-content;
         margin-left:0%;
+    }
+    .highpoints{
+        width:100%;
+        margin-left:0%;
+    }
+    .mobilelook{
+        margin-left:10px;
     }
 }
