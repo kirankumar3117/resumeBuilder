@@ -58,7 +58,7 @@ const documentt=[];
             <div className={styled.left}> 
             {resumeData.noPages.map((e)=>{
                 return( <div><Document file={resumeData.resume}> 
-                    <Page pageNumber={e} scale={0.75}/>
+                    <Page pageNumber={e} scale={0.78}/>
                     
                    {documentt.map(e=>{
                     return React.rendor(e)
@@ -70,10 +70,10 @@ const documentt=[];
                 {resumeData.keypoints ? <div>
                     <h1>Main Points</h1>
                     {resumeData.keypoints.map((e)=>{
-                       return <li>{e}</li>
+                       return <div className={styled.mainlist}><li></li> <div>{e}</div></div>
                     })}
                 </div> : null}
-                <button onClick={()=>{handleResumePages()}}>Build This</button>
+                <button onClick={()=>{handleResumePages()}} className={styled.buildthis}>Build This</button>
                 <h1>{}</h1>
             </div>
         

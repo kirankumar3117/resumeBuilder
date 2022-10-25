@@ -7,12 +7,12 @@
 }
 .left{
     width:51%;
-    background-color:rgb(252, 248, 249);
+    background-color:rgb(255, 255, 255);
     border-right: 3.3px dotted rgb(161, 208, 247);
 }
 .right{
     width:49%;
-    background-image: linear-gradient(rgb(241, 247, 252), rgb(218, 234, 248));
+    background-color:rgb(241, 247, 252);
 }
 .leftcontainer{
     width:80%;
