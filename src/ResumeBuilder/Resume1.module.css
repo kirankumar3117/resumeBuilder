@@ -4,6 +4,7 @@
     display:flex;
     color:rgba(3, 3, 3, 0.767);
     font-family: sans-serif;
+    overflow: hidden;
 }
 .left{
     width:51%;
@@ -227,6 +228,7 @@
 
 }
 .mailid{
+    width:100%;
     margin-left:20px;
     margin-top:-2px;
 
@@ -244,6 +246,7 @@
 .portfolio{
     margin-left:20px;
     margin-top:-2px;
+    width:100%;
 }
 .contactportfolio{
     display:flex;
@@ -259,12 +262,16 @@
     font-variant: small-caps;
     color:rgb(75, 74, 74);
 }
+.projectabout{
+    width:100%;
+}
 .certifications{
     font-weight: bold;
     font-size:30px;
     margin-top: 10px;
     font-variant: small-caps;
     color:rgb(75, 74, 74);
+    width:100%;
 }
 .extracurricularname{
     font-weight: bold;
@@ -272,6 +279,7 @@
     margin-top: 10px;
     font-variant: small-caps;
     color:rgb(75, 74, 74);
+    width:100%;
 }
 .internshipname{
     font-weight: bold;
@@ -279,6 +287,7 @@
     margin-top: 10px;
     font-variant: small-caps;
     color:rgb(75, 74, 74);
+    width:100%;
 }
 
 .changecolor>option{

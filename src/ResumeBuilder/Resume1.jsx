@@ -430,16 +430,16 @@ function Resume1(){
                                     <div className={styled.projectname}>
                                        project
                                     </div>
-                                    <div style={({fontWeight:"bold",fontSize:"23px"})}>{!data ? null : data.projectname}</div>
+                                    <div style={({fontWeight:"bold",fontSize:"23px",width:"100%"})}>{!data ? null : data.projectname}</div>
                                     {!data ? null :
                                     <div>
                                     <div className={styled.projectabout}>
                                     {data.projectabout}
 
                                     </div>
-                                    <div style={({fontSize:"18px",marginTop:"7px"})}><span style={({fontWeight:"bold"})}>Tech Stack: </span>{data.projecttechskills}</div>
+                                    <div style={({fontSize:"18px",marginTop:"7px",width:"100%"})}><span style={({fontWeight:"bold"})}>Tech Stack: </span>{data.projecttechskills}</div>
 
-                                    <div style={({fontSize:"18px",marginTop:"7px"})}><span style={({fontWeight:"bold"})}>Outcome: </span>{data.projectoutcome}</div>
+                                    <div style={({fontSize:"18px",marginTop:"7px",width:"100%"})}><span style={({fontWeight:"bold"})}>Outcome: </span>{data.projectoutcome}</div>
                                     </div>
                                     }
                                 </div>
@@ -454,7 +454,7 @@ function Resume1(){
                                    {!data ? null : <div>
                                     
                                     {data.certifications.map((e)=>{
-                                        return<div style={({display:"flex"})}>
+                                        return<div style={({display:"flex",width:"100%"})}>
                                             <li ></li><div>{e}</div>
                                         </div>
                                     })}
@@ -484,7 +484,7 @@ function Resume1(){
                                    {!data ? null : <div>
                                     
                                     {data.extracurricular.map((e)=>{
-                                        return<div style={({display:"flex"})}>
+                                        return<div style={({display:"flex",width:"100%"})}>
                                             <li ></li><div>{e}</div>
                                         </div>
                                     })}
