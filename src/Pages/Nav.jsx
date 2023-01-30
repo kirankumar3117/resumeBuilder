@@ -32,7 +32,7 @@ export const Nav = ()=>{
                 <span style={({"--i":11})}>d</span>
                 <span style={({"--i":12})}>e</span>
                 <span style={({"--i":13})}>r</span>
-              <div  className={`${styled.wickedImg}`}><img src="https://emojipedia-us.s3.amazonaws.com/source/microsoft-teams/337/winking-face_1f609.png" alt="..." width="40px" /></div>
+              <div  className={`${styled.wickedImg}`}><img src="https://media.tenor.com/gY2utO0pbwkAAAAi/smile-yana.gif" alt="..." width="40px" /></div>
            </div>
             <div className= {styled.navComp}>
             <div>
